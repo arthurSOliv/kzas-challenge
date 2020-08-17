@@ -53,7 +53,7 @@ describe("Carregar os dados para editar", () => {
   beforeEach(() => {
     cy.restoreLocalStorageCache();
   });
-  it("Verificar se os campos estão sendo preenchidos da editar", () => {
+  it("Verificar se os dados foram carregados", () => {
     cy.visit("/");
     cy.wait(1000);
     cy.get("#edit")
