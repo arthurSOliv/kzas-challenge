@@ -87,7 +87,7 @@ export default {
       this.cpf = data.cpf;
       this.code = data.phone.split(" ")[1] ? data.phone.split(" ")[0] : "+55";
       this.phone = data.phone.split(" ")[1]
-        ? data.phone.split(" ")[1]
+        ? `${data.phone.split(" ")[1]} ${data.phone.split(" ")[2]}`
         : data.phone;
       this.email = data.email;
       this.index = this.list.indexOf(data) + 1;

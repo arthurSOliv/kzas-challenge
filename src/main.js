@@ -8,6 +8,7 @@ import router from "./router";
 import "@/config/bootstrap";
 import "@/config/axios";
 import "@/config/toasted";
+import "./config/masks";
 
 Vue.use(Vuelidate);
 

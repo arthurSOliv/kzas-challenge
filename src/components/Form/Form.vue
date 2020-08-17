@@ -28,6 +28,7 @@
               type="text"
               v-model="$v.cpf.$model"
               placeholder="xxx.xxx.xxx-xx"
+              v-mask="['###.###.###-##']"
               maxlength="14"
               :class="{
                 'is-invalid': $v.cpf.$error,
@@ -36,9 +37,6 @@
             />
             <div class="invalid" v-if="$v.cpf.$error">
               <span v-if="!$v.cpf.required">Por favor digite um CPF!</span>
-              <span v-if="!$v.cpf.numeric"
-                >CPF inválido, digite apenas números!</span
-              >
             </div>
           </b-form-group>
         </b-col>
@@ -55,6 +53,7 @@
                 <b-form-input
                   id="phone"
                   v-model="$v.phone.$model"
+                  v-mask="['(##) #####-####']"
                   type="text"
                   placeholder="Digite o telefone"
                   :class="{
@@ -104,7 +103,7 @@
 
 <script>
 import axios from "axios";
-import { required, email, numeric, maxLength } from "vuelidate/lib/validators";
+import { required, email, maxLength } from "vuelidate/lib/validators";
 
 export default {
   name: "Form",
@@ -135,13 +134,11 @@ export default {
     },
     cpf: {
       required,
-      numeric,
       maxLength: maxLength(14)
     },
     phone: {
       required,
-      numeric,
-      maxLength: maxLength(11)
+      maxLength: maxLength(16)
     },
     email: {
       required,
