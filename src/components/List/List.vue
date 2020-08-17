@@ -4,13 +4,19 @@
       <b-table hover striped :items="list" :fields="fields">
         <template v-slot:cell(actions)="data">
           <b-button
+            id="edit"
             variant="warning"
             @click="getToEdit(data.item)"
             class="mr-2"
           >
             <i class="fa fa-pencil"></i>
           </b-button>
-          <b-button variant="danger" @click="remove(data.item)" class="mr-2">
+          <b-button
+            id="delete"
+            variant="danger"
+            @click="remove(data.item)"
+            class="mr-2"
+          >
             <i class="fa fa-trash"></i>
           </b-button>
         </template>
