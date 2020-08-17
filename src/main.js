@@ -7,6 +7,7 @@ import router from "./router";
 
 import "@/config/bootstrap";
 import "@/config/axios";
+import "@/config/toasted";
 
 Vue.use(Vuelidate);
 

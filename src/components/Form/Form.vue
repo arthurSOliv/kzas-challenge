@@ -181,6 +181,7 @@ export default {
       this.$v.$touch();
       if (this.$v.$invalid) {
         this.subimitted = "true";
+        this.$toasted.global.defaultError();
         return;
       } else {
         if (this.edit !== "edit") {
@@ -189,7 +190,7 @@ export default {
           const oldItems = JSON.parse(localStorage.getItem("data")) || [];
 
           const data = {
-            index: oldItems.length + 1,
+            index: oldItems[oldItems.length - 1].index + 1,
             name: this.$v.name.$model,
             cpf: this.$v.cpf.$model,
             phone: `${this.selected} ${this.phone}`,
@@ -213,6 +214,15 @@ export default {
 
           this.$emit("edited", oldItems);
         }
+
+        this.$toasted.global.defaultSuccess();
+
+        this.name = "";
+        this.cpf = "";
+        this.phone = "";
+        this.email = "";
+
+        this.$v.$reset();
       }
     }
   },

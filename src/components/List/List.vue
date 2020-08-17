@@ -79,17 +79,18 @@ export default {
     getToEdit(data) {
       this.name = data.name;
       this.cpf = data.cpf;
-      this.code = data.phone.split(" ")[0];
-      this.phone = data.phone.split(" ")[1];
+      this.code = data.phone.split(" ")[1] ? data.phone.split(" ")[0] : "+55";
+      this.phone = data.phone.split(" ")[1]
+        ? data.phone.split(" ")[1]
+        : data.phone;
       this.email = data.email;
-      this.index = data.index;
-
-      this.$forceUpdate();
+      this.index = this.list.indexOf(data) + 1;
     },
     remove(data) {
       const index = this.list.indexOf(data);
       this.list.splice(index, 1);
       localStorage.setItem("data", JSON.stringify(this.list));
+      this.$toasted.global.defaultSuccess();
     },
     updateValue() {
       this.index = 0;
